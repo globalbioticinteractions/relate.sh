@@ -43,14 +43,14 @@ MATCH_SECOND_PASS=$(tempfile)
 TEMP_FILES="$MATCH_FIRST_PASS $MATCH_SECOND_PASS $PROPS_FILE"
 
 cut -f1,2\
-| $NOMER append --include-header $MATCHER\
+| $NOMER_CMD append --include-header $MATCHER\
 | tee $MATCH_FIRST_PASS\
 | tail -n+2\
 | grep NONE\
 | cut -f1,2\
-| $NOMER append globi-correct\
+| $NOMER_CMD append globi-correct\
 | tail -n+2\
-| $NOMER append --properties $PROPS_FILE $MATCHER\
+| $NOMER_CMD append --properties $PROPS_FILE $MATCHER\
 > $MATCH_SECOND_PASS
 
 head -1 $MATCH_FIRST_PASS
