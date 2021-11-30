@@ -49,7 +49,6 @@ cut -f1,2\
 | grep NONE\
 | cut -f1,2\
 | $NOMER_CMD append globi-correct\
-| tail -n+2\
 | $NOMER_CMD append --properties $PROPS_FILE $MATCHER\
 > $MATCH_SECOND_PASS
 
