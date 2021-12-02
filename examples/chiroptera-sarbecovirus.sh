@@ -113,13 +113,13 @@ function filter_interaction_data {
    | mlr --tsvlite filter '$targetTaxonSubgenusId == "NCBI:2509511" || $sourceTaxonSubgenusId == "NCBI:2509511"'\
    > interactions_sarbeco_ncbi_2509511_chiroptera_gbif_734.tsv
 
-   cat sarbeco_ncbi_2509511_chiroptera_chiroptera_itis_179985/export/tsv/interactions.tsv.gz\
+   cat sarbeco_ncbi_2509511_chiroptera_itis_179985/export/tsv/interactions.tsv.gz\
    | gunzip\
    | mlr --tsvlite filter '$targetTaxonOrderId == "ITIS:179985" || $sourceTaxonOrderId == "ITIS:179985"'\
    | mlr --tsvlite filter '$targetTaxonSubgenusId == "NCBI:2509511" || $sourceTaxonSubgenusId == "NCBI:2509511"'\
    > interactions_sarbeco_ncbi_2509511_chiroptera_itis_179985.tsv
 
-   cat sarbeco_ncbi_2509511_chiroptera_chiroptera_ncbi_9397/export/tsv/interactions.tsv.gz\
+   cat sarbeco_ncbi_2509511_chiroptera_ncbi_9397/export/tsv/interactions.tsv.gz\
    | gunzip\
    | mlr --tsvlite filter '$targetTaxonOrderId == "NCBI:9397" || $sourceTaxonOrderId == "NCBI:9397"'\
    | mlr --tsvlite filter '$targetTaxonSubgenusId == "NCBI:2509511" || $sourceTaxonSubgenusId == "NCBI:2509511"'\
