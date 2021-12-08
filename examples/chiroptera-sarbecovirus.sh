@@ -10,6 +10,8 @@
 # then exports them to interactions.tsv.gz files. 
 #
 
+set -x
+
 # location of relate script
 RELATE_HOME=..
 RELATE_SCRIPT=${RELATE_HOME}/relate.sh
