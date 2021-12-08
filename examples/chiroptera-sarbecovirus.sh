@@ -10,37 +10,49 @@
 # then exports them to interactions.tsv.gz files. 
 #
 
+# location of relate script
+RELATE_HOME=..
+RELATE_SCRIPT=${RELATE_HOME}/relate.sh
+
 function get_names {
   curl https://zenodo.org/record/5719410/files/names.tsv.gz > names.tsv.gz
 }
 
 function relate_names {
 
+ # relate all names to versioned copy of GBIF backbone
+ # and select only GBIF's Chiroptera https://www.gbif.org/species/734
  time cat names.tsv.gz\
   | gunzip\
   | pv -l\
-  | ./relate.sh gbif\
+  | ${RELATE_SCRIPT} gbif\
   | grep "GBIF:734[ \t]"\
   | tee names_chiroptera_gbif_734.tsv
 
+  # related all names to a versioned copy of ITIS 
+  # and select only ITIS's Chiroptera https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=179985
   time cat names.tsv.gz\
    | gunzip\
    | pv -l\
-   | ./relate.sh itis\
+   | ${RELATE_SCRIPT} itis\
    | grep "ITIS:179985[ \t]"\
    | tee names_chiroptera_itis_179985.tsv
 
+  # related all names to a versioned copy of NCBI
+  # and select only NCBI 's Chiroptera https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9397
   time cat names.tsv.gz\
    | gunzip\
    | pv -l\
-   | ./relate.sh ncbi\
+   | ${RELATE_SCRIPT} ncbi\
    | grep "NCBI:9397[ \t]"\
    | tee names_chiroptera_ncbi_9397.tsv
 
+  # related all names to a versioned copy of NCBI
+  # and select only NCBI 's Sarcecoviruses https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=2509511
   time cat names.tsv.gz\
    | gunzip\
    | pv -l\
-   | ./relate.sh ncbi\
+   | ${RELATE_SCRIPT} ncbi\
    | grep "NCBI:2509511[ \t]"\
    | tee names_sarbeco_ncbi_2509511.tsv
 }
