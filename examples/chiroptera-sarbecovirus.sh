@@ -141,6 +141,9 @@ function filter_interaction_data {
 
 }
 
+# remove nomer cache
+rm -rf .nomer
+
 get_names
 
 relate_names
