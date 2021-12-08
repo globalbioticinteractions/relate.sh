@@ -44,7 +44,9 @@ TEMP_FILES="$MATCH_FIRST_PASS $MATCH_SECOND_PASS $PROPS_FILE"
 
 cut -f1,2\
 | $NOMER_CMD append --include-header $MATCHER\
-| tee $MATCH_FIRST_PASS\
+> $MATCH_FIRST_PASS
+
+cat $MATCH_FIRST_PASS\
 | tail -n+2\
 | grep NONE\
 | cut -f1,2\
