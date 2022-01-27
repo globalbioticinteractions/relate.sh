@@ -23,7 +23,7 @@ NOMER_JAR=nomer.jar
 
 if [[ $(which nomer) ]]
   then 
-    echo using local nomer found at [$(which elton)]
+    echo using local nomer found at [$(which nomer)]
     export NOMER_CMD="nomer"
   else
     local NOMER_DOWNLOAD_URL="https://github.com/globalbioticinteractions/nomer/releases/download/${NOMER_VERSION}/nomer.jar"
